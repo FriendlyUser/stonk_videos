@@ -1,8 +1,7 @@
 import React from 'react';
-import {Img, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
-import FRCLogo from "../public/frc.png"
+import {Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 
-export const Logo: React.FC = () => {
+export const WaveImage: React.FC<{ path: string, style: React.CSSProperties}> = ({ path, style }) => {
 	const frame = useCurrentFrame();
 	const {height, fps} = useVideoConfig();
 
@@ -18,11 +17,10 @@ export const Logo: React.FC = () => {
 	const entranceOffset = interpolate(entrance, [0, 1], [height, 0]);
 
 	const wave1 = Math.cos(frame / 15) * 10 + entranceOffset;
-	const wave2 = Math.cos((frame - 5) / 15) * 10 + entranceOffset;
 
 	return (
 		<div>
-			<Img src={FRCLogo} style={{transform: `translateY(${wave1}px)`}} className="absolute" height={120} />
+			<Img src={staticFile(path)} style={{transform: `translateY(${wave1}px)`, ...style}} className="absolute" height={120} />
 		</div>
 	);
 };

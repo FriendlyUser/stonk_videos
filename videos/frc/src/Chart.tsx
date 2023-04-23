@@ -1,8 +1,8 @@
 import React from 'react';
 import {Img, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
-import FRCLogo from "../public/frc.png"
+import Chart from "../public/chart.png"
 
-export const Logo: React.FC = () => {
+export const ChartImage: React.FC = () => {
 	const frame = useCurrentFrame();
 	const {height, fps} = useVideoConfig();
 
@@ -22,7 +22,7 @@ export const Logo: React.FC = () => {
 
 	return (
 		<div>
-			<Img src={FRCLogo} style={{transform: `translateY(${wave1}px)`}} className="absolute" height={120} />
+			<Img src={Chart} style={{transform: `translateY(${wave1}px)`, left: 10, top: 15}} className="absolute" />
 		</div>
 	);
 };
